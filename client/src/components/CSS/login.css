@@ -1,0 +1,32 @@
+
+#Logo{
+    width: 300px;
+}
+
+
+#login{
+    margin-top: 100px;
+    text-align: center;
+}
+#loginform{
+    
+    text-align: center;
+    margin-top: 150px;
+    
+}
+#submitbutton{
+    width: 100%;
+    margin-left: 20px;
+    text-align: left;
+}
+#signinheader{
+    margin-left: 5%;
+}
+#signuplink{
+    margin-left: 25px;
+    text-align: left;
+}
+
+#Form{
+    text-align: left;
+}

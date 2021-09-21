@@ -1,0 +1,113 @@
+#newlocation{
+    width: 300px;
+    height: 50px;
+    
+    background-color: green;
+    color: white;
+}
+#newlocationpopup{
+    margin-top: 20px;
+    text-align: center;
+
+}
+
+#popupform{
+    
+    text-align: center;
+
+    margin-top: 20px;
+    border-color:black;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    background-color: white;
+    
+}
+
+
+form{
+    text-align: center;
+}
+
+input{
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 100px
+}
+
+#country{
+    margin-top: 20px;
+    margin-left: 5%;
+    width: 90%;
+}
+#city{
+    
+    margin-left: 5%;
+    width: 90%;
+}
+#street{
+    
+    margin-left: 0%;
+    width: 175%;
+}
+
+#streetnumber{
+    margin-left: 61%;
+    width: 35%;
+}
+#submitlocation{
+    text-align: center;
+    margin-left: 10px;
+    width: 90%;
+    margin-bottom: 20px;
+}
+
+#dropdown{
+    
+    margin-left: 33%;
+}
+
+#dropodownlocation{
+    margin-top: 50px;
+    text-align: left;
+    border-style: solid;
+    border-color:black;
+    border-width: 1px;
+    width: 700px;
+}
+#dropdownlocationstreet{
+    margin-top: 20px;
+    margin-left: 100px;
+}
+#dropdownlocationcountry{
+    margin-bottom: 20px;
+    margin-left: 100px;
+}
+
+#countrylist{
+    display:inline-block;
+    font-size: 20px;
+    
+}
+#citylist{
+    display: inline-block;
+    font-size: 20px;
+}
+
+#streetnumberlist{
+    font-size: 30px;
+    display: inline-block;
+}
+#streetlist{
+    font-size: 30px;
+    display: inline-block;
+
+}
+
+#trackButton{
+    border-style: none;
+    background-color: white;
+    color: blue;
+    font-size: 15px;
+
+}

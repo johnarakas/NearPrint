@@ -1,0 +1,22 @@
+.leaflet-container {
+    width: 600px;
+    height: 300px;
+    z-index: 1;
+  }
+
+#map_country{
+  width: 250px;
+  height: 40px;
+}
+
+#map_city{
+  width: 250px;
+  height: 40px;
+  
+}
+
+#search_map{
+  margin-left: 15px;
+  margin-top: -5px;
+  height: 40px;
+}

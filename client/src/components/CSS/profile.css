@@ -1,0 +1,64 @@
+#introductory{
+    margin-top: 50px;
+    margin-left: 15%;
+    background-color: white;
+    border-color: black;
+    
+}
+
+#profileImage{
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+}
+
+#profileImageDiv{
+    margin-top: 50px;
+    margin-left: 30px;
+    text-align: left;
+}
+
+#usernameDiv{
+    margin-left: 30px;
+}
+#editIcon{
+    height: 50px;
+    width: auto;
+    
+}
+
+#editDiv{
+    
+    text-align: right;
+    margin-right: 50px;
+    
+}
+button{
+    border-style: none;
+    background-color: white;
+}
+
+
+
+#popupFormDiv{
+    margin-top: 5%;
+    margin-left: 30%;
+    
+    background-color: white;
+    
+
+    width: 40%;
+}
+#popupForm{
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-right: 60px;
+    height: 100% ;
+}
+
+
+#editsubmitbutton{
+    margin-left: 10px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}

@@ -1,0 +1,39 @@
+#logodiv{
+    vertical-align: top;
+    margin-left: 300px;
+}
+
+
+#logodiv{
+    
+    margin-left: 300px;
+}
+
+#inputdiv{
+    margin-top: 50px;
+    padding-top: 20px;
+    margin-left: 500px;
+    border-color:black;
+    border-width: 2px;
+    border-style: solid;
+    width: 400px;
+    height: 600px;
+    border-radius: 20px;
+}
+#formdiv{
+    
+    margin-left: 10%;
+    width: 80%;
+    text-align: left;
+}
+input{
+    margin-top: 20px;
+}
+#submitbutton{
+    width: 100%;
+}
+#signuptext{
+    padding-top: 20px;
+    margin-top: 20px;
+    margin-left: 30px;
+}
