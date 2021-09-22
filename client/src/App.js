@@ -8,7 +8,7 @@ import { Route } from "react-router-dom";
 import Login from "./components/login";
 import Signup from "./components/signup";
 import Homepage from "./components/homepage";
-import Profile from "./components/profilePage";
+import Profile from "./components/profile";
 import Project from "./components/projects";
 import Map from "./components/map";
 import AddressesList from "./components/AddressesList";
