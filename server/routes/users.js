@@ -79,6 +79,34 @@ users.route("/users/signup").post(function (req, res) {
  
 });
 
+  users.route("/users/print").post( async function (req, res) {
+    let db_connect = dbo.getDb("users");
+    let id = { id: req.body.id };
+    
+    let newvalues = {
+      $set: {
+        
+        username: req.body.username,
+        printer:req.body.printer,
+        print:req.body.print
+    
+      },
+    };
+
+    var _id=  req.body.id 
+    console.log(_id)
+    console.log(newvalues)
+    
+    try{
+      var result =   await  db_connect.collection("accounts").updateOne({username:   req.body.username }, newvalues)
+      console.log(result)
+      console.log(req.body.id)
+    }catch(e){
+      console.log(e)
+    }
+        
+      
+  });
 
 // This section will help you update a record by id.
   users.route("/users/update").post( async function (req, res) {

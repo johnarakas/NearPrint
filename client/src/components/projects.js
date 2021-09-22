@@ -6,7 +6,6 @@ import axios from 'axios';
 import Cookies from 'universal-cookie';
 
 import Navbar from "./navbar";
-import ProfileNavbar from "./profilenavbar";
 
 
 import "./CSS/project.css"

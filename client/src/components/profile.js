@@ -115,11 +115,8 @@ export default class Profile  extends Component {
       email:"",
 
       imageUrl:"",
-      info:"",
-      printer:false,
-      print:false,
-      designer:false,
-      design:false
+      info:""
+      
     });
 
   }
@@ -251,7 +248,7 @@ export default class Profile  extends Component {
                           {this.ShowProfileForm() }
                       </Col>
                       
-                      <div id="infoDiv">
+                      <div id="infoDiv" style={{marginBottom:"20px"}}>
                         {user.info}
                       </div>
                     </Row>
