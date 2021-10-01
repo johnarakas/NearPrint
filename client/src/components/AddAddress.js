@@ -129,7 +129,8 @@ export default class AddAddress  extends Component {
         axios
             .get(`https://nominatim.openstreetmap.org/reverse?format=json&addressdetails=1&lat=${this.state.x}&lon=${this.state.y}&accept-language=en&zoom=18&callback=?`)
             .then((res) => {
-              // console.log(res)
+              
+              console.log(res)
               
               
               this.setState({ country: res.data.address.country})
@@ -140,6 +141,12 @@ export default class AddAddress  extends Component {
               if(res.data.address.residential!==undefined)
                   this.setState({ city:res.data.address.residential })
               
+                  
+              if(res.data.address.road!==undefined)
+                this.setState({ street :res.data.address.road })
+              
+              if(res.data.address.city!==undefined)
+                this.setState({ city:res.data.address.city })
             })
         
     }
