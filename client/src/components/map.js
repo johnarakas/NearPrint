@@ -325,7 +325,7 @@ export default class Map  extends Component {
                               {this.LoadUsers()}
                           </LayerGroup>
                         </LayersControl.Overlay>
-                        <LayersControl.Overlay  checked name="Users print on demand">
+                        <LayersControl.Overlay  checked name="Users who print on demand">
                           <LayerGroup>
                               {this.LoadPrints()}
                           </LayerGroup>
