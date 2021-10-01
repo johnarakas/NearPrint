@@ -11,16 +11,8 @@ import React, { Component } from "react";
 import {Modal, Container , Row , Col  , Button , Form} from 'react-bootstrap'
 
 
-import Profile from "./profile";
-import Locations from "./locations";
-import Projects from "./projects";
-
-import Popup from 'reactjs-popup';
-import Edit from './images/edit.png'
-import DefaultProfilePicture from './images/profile.png'
 import "./CSS/profile.css"
-import AddressesList from "./AddressesList";
-import ProffileButtons from "./ProffileButtons";
+
 import Project from './images/project.png'
 
 const cookies = new Cookies();
@@ -37,11 +29,15 @@ export default class AddProject  extends Component {
         this.onChangeInfo = this.onChangeInfo.bind(this);
         this.onChangeRequirements = this.onChangeRequirements.bind(this);
         this.onChangePrice = this.onChangePrice.bind(this);
+        this.onChangeImage = this.onChangeImage.bind(this);
         this.onChangeFile = this.onChangeFile.bind(this);
+        this.ClosePopup = this.ClosePopup.bind(this) ;
+        
+        this.AddImage = this.AddImage.bind(this);
+        this.AddFile = this.AddFile.bind(this)
+        
+        this.onChangeAddress = this.onChangeAddress.bind(this)
 
-        
-        this.onChangeStreet = this.onChangeStreet.bind(this);
-        
         this.onSubmit = this.onSubmit.bind(this);
     
         this.state = {
@@ -60,15 +56,52 @@ export default class AddProject  extends Component {
             country:"",
             city:"",
             street:"",
-            streetnumber:"",
+            
             x:"",
             y:"",
             addresses:[],
-            projects:[],
+            addressesString:[],
+
+            address:"",
+
+            image:"",
+            images:[],
+            
+            file:"",
+            files:[],
+            
+            popup:false
           
         };
       }
       
+      onChangeAddress(e){
+        e.preventDefault();
+
+        this.setState({address: e.target.value})
+        
+        for(var addr of this.state.addresses){
+          if(addr._id === e.target.value){
+            
+            this.setState({
+
+              country: addr.country,
+              city: addr.city,
+              street: addr.street,
+              x: addr.x,
+              y: addr.y
+            })
+          }
+        }
+
+      }
+      onChangeImage(e){
+        
+        this.setState({
+          image:e.target.value
+        })
+
+      }
      
       onChangeName(e) {
         this.setState({
@@ -96,17 +129,24 @@ export default class AddProject  extends Component {
         });
       }
      
-      
+      AddImage(e){
 
 
-      // These methods will update the state properties.
-      onChangeStreet(e) {
-        this.setState({
-          street: e.target.value,
-        });
+        e.preventDefault();
+
+        this.state.images.push(this.state.image)
+        this.setState({image:""})
+        
       }
-      
-      
+
+      AddFile(e){
+
+        e.preventDefault();
+
+        this.state.files.push(this.state.file)
+        this.setState({file:""})
+
+      }
     
 
     onSubmit(e) {
@@ -124,7 +164,7 @@ export default class AddProject  extends Component {
 
             this.setState({country: response.data.country})
             this.setState({city: response.data.city})
-            this.setState({streetnumber: response.data.streetnumber})
+            
 
             let project = {
                 username: user.username,
@@ -133,15 +173,20 @@ export default class AddProject  extends Component {
                 requirements : this.state.requirements,
                 price : this.state.price,
                 email : user.email,
-                file : this.state.file,
+                images: this.state.images,
+                files : this.state.files,
                 phone : user.phone,
                 country:this.state.country,
                 city: this.state.city,
                 street: this.state.street,
-                streetnumber:this.state.streetnumber,
+                
                 x: this.state.x,
                 y: this.state.y,
+
+                popup: false
             }
+            
+            // console.log(project)
             axios
             .post("http://localhost:3000/projects/add" ,project )
             .then((res) => {
@@ -166,7 +211,7 @@ export default class AddProject  extends Component {
                 country:"",
                 city:"",
                 street:"",
-                streetnumber:"",
+                
                 x:"",
                 y:"",
                 addresses:[],
@@ -193,16 +238,31 @@ export default class AddProject  extends Component {
         .post("http://localhost:3000/locations/getUserLocations",obj)
         .then((response) => {
           
-            let addresses =  response.data;
-            let array = []
-            for(var addr of addresses){
-                let str= ""
-                str = addr.street
-                
-                array.push(str)
+          this.setState({addresses: response.data})
 
-            }
-            this.setState({addresses: array})
+          let tmp = response.data[0]
+          this.setState({
+            address: tmp._id,
+            country: tmp.country,
+            city: tmp.city,
+            street: tmp.street,
+            x: tmp.x,
+            y: tmp.y
+          })
+          
+          
+          // console.log(response.data)
+          //   for(var addr of response.data){
+          //       let str= ""
+          //       str = addr.city
+          //       if(addr.street !== "")
+          //           str+= " , "+ addr.street     
+                    
+          //       this.state.addressesString.push(str)
+
+          //   }
+
+            // this.setState({addresses: array})
 
 
 
@@ -226,20 +286,46 @@ export default class AddProject  extends Component {
     DivAddress(){
       
         return this.state.addresses.map((addr) => {
-            
+          let str=""
+          
+          str+= addr.city
+
+          if(addr.street !== ""){
+            str+=" , "+addr.street
+          }
+          
           return(
             <option 
-                value={addr}
-                key={addr}
+                value={addr._id}
+                key={addr._id}
                 checked={this.state.role === addr}
                 
-            >{addr}</option>
+            >{str}</option>
           );
         });
     };
 
-    
+    LoadImages(){
+      
+      return this.state.images.map((img) => {
+      
+        
+        return(
+          <p>{img+"\n"}</p>
+        );
+      });
+    }
   
+    LoadFiles(){
+      
+      return this.state.files.map((file) => {
+      
+        
+        return(
+          <p>{file+"\n"}</p>
+        );
+      });
+    }
     
 
     
@@ -264,8 +350,102 @@ export default class AddProject  extends Component {
                 New Project
               </Modal.Title>
             </Modal.Header>
-                <Modal.Body>
-                    
+            <Modal.Body>
+                    <Form  onSubmit={this.onSubmit}  style={{textAlign:"center", width:"95%"}} >
+                        
+                              <select style={{width:"100%"}} onChange={this.onChangeAddress} value={this.state.address}>
+                                {this.DivAddress()}
+                              </select>
+                              
+                              <hr style={{marginLeft:"30px" , marginBottom:"30px", marginTop:"30px"}} />
+
+                              <Form.Control type="text" 
+                                  
+                                  id="name"
+                                  placeholder="Project Name"
+                                  name="name"
+                                  required="required" 
+                                  className="form-control"
+                                  value={this.state.name}
+                                  onChange={this.onChangeName}
+                              />
+
+                              <Form.Control type="text" 
+                                as="textarea" rows={3}
+                                placeholder="Project Info" 
+                                value={this.state.info}
+                                onChange={ this.onChangeInfo}
+                              />
+
+                              <Form.Control type="text" 
+                                as="textarea" rows={3}
+                                placeholder="Project Requirements" 
+                                value={this.state.requirements}
+                                onChange={ this.onChangeRequirements}
+                              />
+
+                              <Form.Control type="text" 
+                                  
+                                  placeholder="Price"
+                                  
+                                  required="required" 
+                                  className="form-control"
+                                  value={this.state.price}
+                                  onChange={this.onChangePrice}
+                              />
+
+                              
+                              <hr style={{marginLeft:"30px" , marginBottom:"30px", marginTop:"30px"}} />
+                            
+                              <Container >
+
+                                <Row>
+                                      {this.LoadImages()}
+                                  <Col style={{marginTop:"-20px",  marginLeft:"-10px"}}>
+                                    <Form.Control type="text" 
+                                        
+                                        placeholder="Place Image URL"
+                                        style={{width:"170%"}}
+                                        
+                                        className="form-control"
+                                        value={this.state.image}
+                                        onChange={this.onChangeImage}
+                                        
+                                    />
+                                  </Col>
+                                  <Col style={{textAlign:"right",  marginRight:"-30px"}}>
+                                    <Button onClick={ this.AddImage } >Add</Button>
+                                  </Col>
+                                </Row>
+                                <br/>
+                                <Row>
+                                  {this.LoadFiles()}
+                                  <Col style={{marginTop:"-20px", marginLeft:"-10px"}}>
+                                    <Form.Control type="text" 
+                                        style={{width:"170%"}}
+                                        placeholder="Place File URL"
+                                        
+                                        className="form-control"
+                                        value={this.state.file}
+                                        onChange={this.onChangeFile}
+                                    />
+                                  </Col>
+                                  <Col style={{textAlign:"right", marginRight:"-30px"}}>
+                                      <Button onClick={ this.AddFile }>Add</Button>
+                                  </Col>
+                                </Row>
+
+                                
+
+                              </Container>
+                            <Button id="editsubmitbutton" onClick={this.ClosePopup}>
+                                Close
+                            </Button>
+                            
+                            <Button variant="primary" id="editsubmitbutton" type="submit">
+                                Add New Project
+                            </Button>
+                        </Form>
             </Modal.Body>
           </Modal>
           );

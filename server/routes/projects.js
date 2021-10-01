@@ -42,7 +42,7 @@ const projects = express.Router();
             country : req.body.country  ,
             city : req.body.city,
             street : req.body.street,
-            streetnumber : req.body.streetnumber,
+            
             x : req.body.x,
             y : req.body.y,
         
