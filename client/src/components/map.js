@@ -283,7 +283,7 @@ export default class Map  extends Component {
         
           return(
             <div>
-              <Navbar/>
+              {/* <Navbar/> */}
               <Container>
                 <br/>
                 <Row>

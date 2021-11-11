@@ -4,7 +4,7 @@
 
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import { Navbar, Nav, NavItem, NavDropdown, Badge } from 'react-bootstrap';
+import { Navbar, Nav, NavItem, NavDropdown, Badge, Row, Col } from 'react-bootstrap';
 
 // We import NavLink to utilize the react router.
 import { NavLink } from "react-router-dom";
@@ -12,11 +12,10 @@ import { NavLink } from "react-router-dom";
 import Container from 'react-bootstrap/Container'
 
 
-import profileicon from './images/profile.png'
 
 import Cookies from 'universal-cookie';
 
-import DefaultProfilePicture from './images/profile.png'
+import DefaultProfilePicture from './images/profile.jpg'
 
 const cookies = new Cookies();
 
@@ -27,8 +26,10 @@ const cookies = new Cookies();
   export default class Bar  extends Component {
   
     LoadImage(){
-      
+      console.log("hi");
+      console.log(user.imageUrl);
       if(user.imageUrl !== ""){
+
         return user.imageUrl
       }else{
         return DefaultProfilePicture
@@ -49,16 +50,23 @@ const cookies = new Cookies();
              <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="me-auto">
-                  <Nav.Link className="nav-link"  href="/map" >Map</Nav.Link>
-                  
+
                   <Nav.Link >Projects</Nav.Link>
                 
               </Nav>
               <Nav>
-                
-                <Nav.Link eventKey={2} >
-                  <NavLink className="nav-link"  to="/profile"><img style={{width:"40px" , height:"auto" , borderRadius:"50px"}} src={this.LoadImage()} alt="log" ></img>{" "+user.username}</NavLink>    
+              <Nav.Link eventKey={2} >
+                  
+                  {/* <NavLink className="nav-link"  to="/profile">{" "+user.username}</NavLink>     */}
               
+                </Nav.Link>
+                
+                  <div style={{marginTop:"15px"}}>
+                    <Nav.Link className="nav-link"  href="/" >Logout</Nav.Link>
+                  </div>
+                <Nav.Link eventKey={2} >
+                      <NavLink className="nav-link"  to="/profile"><img style={{width:"40px" , height:"auto" , borderRadius:"50px"}} src={this.LoadImage()} alt="log" ></img>{" "+user.username}</NavLink>    
+                  
                 </Nav.Link>
               </Nav>
             </Navbar.Collapse>
