@@ -113,27 +113,29 @@ export default class Map  extends Component {
                 key={loc._id}  
                 icon={iconPerson} >
                      <Popup>
-                    <div style={{ display: "inline-block"}}>
-                        <img src={ loc.url } style={{height:"50px", with:"auto"}} alt="1"></img>
+                       
+                     <div  style={{width:"500px"}}>
+                        <div style={{ display: "inline-block"}}>
+                            <img src={ loc.url } style={{height:"50px", with:"auto"}} alt="1"></img>
 
-                    </div>
-                    
-                    <div style={{ display: "inline-block",marginLeft:"20px", verticalAlign:"bottom"}}>
-                        <h6>{loc.username}</h6>
-
-                    </div>
-                    <br/>
-                    <div style={{ display: "inline-block"}}>
-                        <p style={{backgroundColor:"#FF00E4", padding:"5px" , borderRadius:"20px"}} >has a printer</p>
-
-                    </div>
-                    
-                    <div style={{ display: "inline-block",marginLeft:"20px", verticalAlign:"bottom"}}>
+                        </div>
                         
-                        <p style={{backgroundColor:"#00A19D",padding:"5px", borderRadius:"20px" }} > print on demand</p>
+                        <div style={{ display: "inline-block",marginLeft:"20px", verticalAlign:"bottom"}}>
+                            <h6>{loc.username}</h6>
 
-                    </div>
+                        </div>
+                        <br/>
+                        <div style={{ display: "inline-block"}}>
+                            <p style={{backgroundColor:"#EEE" , padding:"5px" }} ># has a printer</p>
+
+                        </div>
                         
+                        <div style={{ display: "inline-block",marginLeft:"20px", verticalAlign:"bottom"}}>
+                            
+                            <p style={{backgroundColor:"#EEE",padding:"5px"}} ># print on demand</p>
+
+                        </div>
+                      </div>
                   </Popup>
               </Marker>
               
@@ -152,22 +154,23 @@ export default class Map  extends Component {
                 key={loc._id}  
                 icon={iconPerson} >
                      <Popup>
-                    <div style={{ display: "inline-block"}}>
-                        <img src={ loc.url } style={{height:"50px", with:"auto"}} alt="1"></img>
+                       <div  style={{width:"500px"}}>
+                          <div style={{ display: "inline-block"}}>
+                              <img src={ loc.url } style={{height:"50px", with:"auto"}} alt="1"></img>
 
-                    </div>
+                          </div>
+                          
+                          <div style={{ display: "inline-block",marginLeft:"20px", verticalAlign:"bottom"}}>
+                              <h6>{loc.username}</h6>
+
+                          </div>
+                          <br/>
+                          <div style={{ display: "inline-block"}}>
+                              <p style={{backgroundColor:"#EEE" , padding:"5px" }} ># has a printer</p>
+
+                          </div>
                     
-                    <div style={{ display: "inline-block",marginLeft:"20px", verticalAlign:"bottom"}}>
-                        <h6>{loc.username}</h6>
-
-                    </div>
-                    <br/>
-                    <div style={{ display: "inline-block"}}>
-                        <p style={{backgroundColor:"#FF00E4", padding:"5px" ,borderRadius:"20px" }} > has a printer </p>
-
-                    </div>
-                    
-                        
+                        </div>
                   </Popup>
               </Marker>
               

@@ -26,6 +26,7 @@
     "react-leaflet": "^3.2.1",
     "react-leaflet-geosearch": "^0.3.4",
     "react-leaflet-search": "^2.0.1",
+    "react-responsive-carousel": "^3.2.22",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-switch": "^6.0.0",

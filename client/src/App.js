@@ -14,6 +14,7 @@ import Map from "./components/map";
 import AddressesList from "./components/AddressesList";
 import ProffileButtons from "./components/ProffileButtons";
 import AddAddress from "./components/AddAddress";
+import ShowcaseProjects from "./components/ShowcaseProjects";
 
 
 
@@ -21,6 +22,9 @@ const App = () => {
   return (
     <div>
       
+      <Route path="/ShowcaseProjects">
+        <ShowcaseProjects />
+      </Route>
       <Route exact path="/addresses">
         <AddressesList />
       </Route>

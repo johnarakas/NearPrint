@@ -21,6 +21,19 @@ const projects = express.Router();
         });
     });
 
+    projects.route("/MyProjects").post(function (req, res) {
+        let db_connect = dbo.getDb("project");
+
+        let obj = { username : req.body.username}
+        db_connect
+        .collection("projects")
+        .find(obj)
+        .toArray(function (err, result) {
+            if (err) throw err;
+            res.json(result);
+        });
+    });
+
     projects.route("/projects/add").post(function (req, res) {
         let db_connect = dbo.getDb("project");
         
